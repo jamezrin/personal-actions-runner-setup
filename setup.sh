@@ -6,6 +6,7 @@ function install_arc_controller() {
 	helm upgrade --install arc \
 		--namespace "${ARC_CONTROLLER_NAMESPACE}" \
 		--create-namespace \
+        --wait \
 		oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
 }
 
@@ -21,10 +22,11 @@ function install_arc_runner_set() {
 		--set githubConfigUrl="${GITHUB_REPO_URL}" \
 		--set githubConfigSecret="${ARC_GITHUB_PAT_SECRET_NAME}" \
         --values gha-runner-scale-set-dind-fix.yaml \
+        --wait \
 		oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
 }
 
-install_arc_controller
+install_arc_controller 
 install_arc_runner_set "jamezrin/rustplusplus-spiced"
 install_arc_runner_set "jamezrin/MonaPaste"
 install_arc_runner_set "jamezrin/timeit-webapp"
