@@ -21,7 +21,7 @@ template:
             mountPath: /run/docker
             readOnly: true
       - name: dind
-        image: docker:24.0.7-dind-alpine3.18 # FIX: https://github.com/actions/actions-runner-controller/issues/3159
+        image: docker:dind
         args:
           - dockerd
           - --host=unix:///run/docker/docker.sock
@@ -29,6 +29,9 @@ template:
         env:
           - name: DOCKER_GROUP_GID
             value: '123'
+          # FIX: https://github.com/actions/actions-runner-controller/issues/3159
+          - name: DOCKER_IPTABLES_LEGACY
+            value: '1'
         securityContext:
           privileged: true
         volumeMounts:
