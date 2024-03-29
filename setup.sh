@@ -26,9 +26,10 @@ function install_arc_runner_set() {
 		oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
 }
 
-install_arc_controller 
-install_arc_runner_set "jamezrin/rustplusplus-spiced"
+install_arc_controller
+install_arc_runner_set "cyber-rust/cyber-rust"
 install_arc_runner_set "jamezrin/MonaPaste"
 install_arc_runner_set "jamezrin/timeit-webapp"
 install_arc_runner_set "jamezrin/test-spring"
 install_arc_runner_set "jamezrin/aylamusica-rails"
+install_arc_runner_set "jamezrin/onthatass-auto-campaigns"
